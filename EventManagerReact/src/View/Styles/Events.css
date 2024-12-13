@@ -1,0 +1,87 @@
+/* Event Box */
+.event-box {
+    display: grid;
+    gap: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    padding-bottom: 40px;
+    width: 90%;
+    max-width: 1400px;
+    height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 12px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  /* Event Card */
+  .event-card {
+    display: flex; 
+    align-items: flex-start;
+    background-color: #edebe8;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 180px; 
+    overflow: hidden; 
+  }
+  
+  
+
+.event-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+}
+
+/* Image */
+.event-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Event Card Content */
+.event-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.event-card-content h3 {
+    margin: 0 0 10px; 
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.event-card-content .time {
+    font-size: 14px; 
+    color: #555; 
+    font-weight: bold; 
+}
+
+.event-card-content .date,
+.event-card-content .location {
+    font-size: 14px; 
+    color: #666; 
+}
+
+/* Description Styling */
+/*.event-card-content p {
+    margin: 0; 
+    font-size: 14px; 
+    color: #666; 
+    text-align: left; 
+}
+
+/* Media Query */
+@media (min-width: 1024px) {
+    .event-box {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}

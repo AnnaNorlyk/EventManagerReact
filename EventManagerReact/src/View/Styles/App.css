@@ -1,0 +1,96 @@
+/* App-Level Layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #6f89a6;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Right Section */
+.header-right {
+  display: flex;
+  gap: 10px;
+}
+
+/* Header Button Styling */
+.header-button {
+  background-color: #a1b3c7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-button:hover {
+  background-color: #777;
+}
+
+/* Main Header Styling */
+.main-header {
+  text-align: center;
+  font-size: 40px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* Main Section */
+.main-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+/* Bar for Search and Sort */
+.search-sort-bar {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 10px; 
+  width: 90%; 
+  max-width: 1400px;
+  margin-bottom: 10px; 
+  padding: 0 20px;
+  box-sizing: border-box; 
+  position: relative; 
+}
+
+/* Sort Dropdown */
+.sort-dropdown {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  flex: 0 0 200px;
+  position: relative; 
+  left: -10px; 
+}
+
+/* Search */
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  flex: 1; 
+  max-width: 300px;
+}
+
+/* Footer*/
+.footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #ddd;
+}
