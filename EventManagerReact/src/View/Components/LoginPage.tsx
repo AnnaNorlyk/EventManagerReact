@@ -46,9 +46,12 @@ function LoginPage() {
       // Success message
       const result = await response.json();
       console.log("Login successful:", result);
-      alert("Login Successful!");
 
-      // Navigate back to front page after logging in
+      // Store logged-in user information in SessionStorage
+      sessionStorage.setItem("loggedInUser", JSON.stringify(result));
+
+      // Alert success and navigate back to the main page
+      alert("Login Successful!");
       navigate("/");
     } catch (error) {
       // Alert for error
@@ -61,7 +64,6 @@ function LoginPage() {
     <div className="login-page-container">
       <h1>Log Ind</h1>
       <form onSubmit={handleSubmit} className="login-form">
-
         {/* Email input */}
         <input
           type="email"

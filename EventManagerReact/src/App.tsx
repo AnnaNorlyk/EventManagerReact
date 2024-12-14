@@ -4,6 +4,7 @@ import Header from "./View/Components/HeaderComponent";
 import MainSection from "./View/Components/MainSection";
 import LoginPage from "./View/Components/LoginPage";
 import OpretPage from "./View/Components/OpretPage";
+import CreateEventPage from "./View/Components/CreateEventPage";
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/" element={<MainSection />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/opret" element={<OpretPage />} />
+        <Route path="/create-event" element={<CreateEventPage />} />
       </Routes>
     </Router>
   );

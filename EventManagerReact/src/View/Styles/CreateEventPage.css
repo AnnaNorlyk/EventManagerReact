@@ -1,0 +1,120 @@
+/* Container for the Create Event Page */
+.create-event-page {
+    text-align: center;
+    margin-top: 50px;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading */
+  .create-event-page h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  /* Form */
+  .create-event-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* Input fields, select, and textarea */
+  .create-event-form input,
+  .create-event-form select,
+  .create-event-form textarea {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .create-event-form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .create-event-form input:focus,
+  .create-event-form select:focus,
+  .create-event-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Submit Button */
+  .create-event-form .submit-button {
+    width: 300px;
+    padding: 10px 20px;
+    background-color: #6f89a6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .create-event-form .submit-button:hover {
+    background-color: #555;
+  }
+  
+  .create-event-form .submit-button:active {
+    background-color: #333;
+  }
+  
+  /* Return Button */
+  .tilbage-button {
+    width: 300px;
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tilbage-button:hover {
+    background-color: #bbb;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .create-event-page {
+      padding: 15px;
+    }
+  
+    .create-event-page h1 {
+      font-size: 28px;
+    }
+  
+    .create-event-form input,
+    .create-event-form select,
+    .create-event-form textarea,
+    .create-event-form .submit-button,
+    .tilbage-button {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  
