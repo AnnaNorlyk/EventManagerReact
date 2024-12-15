@@ -71,13 +71,9 @@
     color: #666; 
 }
 
-/* Description Styling */
-/*.event-card-content p {
-    margin: 0; 
-    font-size: 14px; 
-    color: #666; 
-    text-align: left; 
-}
+.details {
+    font-size: 1rem; 
+  }
 
 /* Media Query */
 @media (min-width: 1024px) {

@@ -6,7 +6,7 @@ const CreateEventPage: React.FC = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     eventName: "",
-    eventCategory: "Other",
+    eventCategory: "Andet",
     eventDescription: "",
     eventStart: "",
     eventEnd: "",
