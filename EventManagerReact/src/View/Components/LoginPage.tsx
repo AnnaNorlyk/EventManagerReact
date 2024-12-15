@@ -22,7 +22,7 @@ function LoginPage() {
     }));
   };
 
-  // Handles submit click
+  // Handles form submission for login
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevents the page from refreshing
 
@@ -38,12 +38,12 @@ function LoginPage() {
 
       // Alert for error
       if (!response.ok) {
-        const data = await response.json();
-        alert(data.message || "Login failed. Please try again.");
+        const errorData = await response.json();
+        alert(errorData.message || "Login failed. Please try again.");
         return;
       }
 
-      // Success message
+      // Success response
       const result = await response.json();
       console.log("Login successful:", result);
 
@@ -54,7 +54,7 @@ function LoginPage() {
       alert("Login Successful!");
       navigate("/");
     } catch (error) {
-      // Alert for error
+      // Alert for unexpected errors
       console.error("Error during login:", error);
       alert("An unexpected error occurred. Please try again.");
     }

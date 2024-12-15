@@ -18,38 +18,45 @@ const CreateEventPage: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+   
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
+  
     try {
-      const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser") || "null");
-
-      if (!loggedInUser) {
+      // Retrieve the logged-in user from session storage
+      const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUser") || "null");
+      if (!loggedInUser?.userId) {
         alert("You must be logged in to create an event.");
         return;
       }
-
-      const response = await fetch("/api/events/create-event", {
+  
+      // Send the event creation request
+      const response = await fetch("/api/events/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, userId: loggedInUser.userId }),
       });
-
+  
+      // Handle response
       if (!response.ok) {
-        const data = await response.json();
-        alert(data.message || "Failed to create event. Please try again.");
+        const errorData = await response.json().catch(() => ({}));
+        alert(errorData.message || "Failed to create event.");
         return;
       }
-
-      alert("Event created successfully!");
+  
+      // If succesful, show a message and navigate
+      const contentType = response.headers.get("Content-Type");
+      const data = contentType?.includes("application/json") ? await response.json() : {};
+      alert(data.message || "Event created successfully.");
       navigate("/");
+      
     } catch (error) {
-      console.error("Error creating event:", error);
-      alert("An error occurred while creating the event. Please try again.");
+      console.error("Error in handleSubmit:", error);
+      alert("An error occurred. Please try again.");
     }
   };
+  
+  
 
   return (
     <div className="create-event-page">
