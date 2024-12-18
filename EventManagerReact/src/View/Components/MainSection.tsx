@@ -6,6 +6,8 @@ const MainSection: React.FC = () => {
   const [events, setEvents] = useState<EventData[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortTerm, setSortTerm] = useState("");
 
   // Load events when the component loads
   useEffect(() => {
@@ -31,23 +33,76 @@ const MainSection: React.FC = () => {
     loadEvents();
   }, []);
 
+  const searchFunction = (allEvents: EventData[], term: string): EventData[] => {
+    return allEvents.filter((event) =>
+      (event.eventName ?? "").toLowerCase().includes(term.toLowerCase())
+    );
+  };
+
+  const sortFunction = (allEvents: EventData[], criterion: string): EventData[] => {
+    const sorted = [...allEvents]; 
+
+    switch (criterion) {
+      case "name":
+        sorted.sort((a, b) => (a.eventName ?? "").localeCompare(b.eventName ?? ""));
+        break;
+      case "date":
+        sorted.sort(
+          (a, b) =>
+            new Date(a.eventStart ?? "").getTime() - new Date(b.eventStart ?? "").getTime()
+        );
+        break;
+      case "category":
+        sorted.sort((a, b) =>
+          (a.eventCategory ?? "").localeCompare(b.eventCategory ?? "")
+        );
+        break;
+      default:
+        break;
+    }
+
+    return sorted;
+  };
+
+  const filteredEvents = searchFunction(events, searchTerm);
+  const finalEvents = sortFunction(filteredEvents, sortTerm);
+
   return (
     <div className="main-section">
       <h1 className="main-header">Begivenheder</h1>
 
-      {/* If there is an error, show it */}
+      <div className="search-sort-bar">
+        {/* Sort Dropdown */}
+        <select
+          className="sort-dropdown"
+          value={sortTerm}
+          onChange={(e) => setSortTerm(e.target.value)}
+        >
+          <option value="">Sortér efter</option>
+          <option value="name">Navn</option>
+          <option value="date">Dato</option>
+          <option value="category">Kategori</option>
+        </select>
+
+        {/* Search Input */}
+        <input
+          type="text"
+          placeholder="Søg efter begivenhed..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+      </div>
+
       {error && <div className="error-message">{error}</div>}
 
       {/* If still loading, show a loading message */}
       {isLoading && <div className="loading-message">Loading events...</div>}
 
       <div className="event-box">
-        {!isLoading && events.length > 0 ? (
-          events.map((event) => (
-            <EventCard key={event.eventId} event={event} />
-          ))
+        {!isLoading && finalEvents.length > 0 ? (
+          finalEvents.map((event) => <EventCard key={event.eventId} event={event} />)
         ) : (
-          // If no events are found, show this message
           !isLoading && <p className="no-events-message">Ingen godkendte begivenheder fundet</p>
         )}
       </div>
